@@ -1,0 +1,41 @@
+import React, { Component } from 'react';
+import { Text, ActivityIndicator } from 'react-native';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as RepositoriesActions } from '~/store/ducks/repositories';
+
+import { Container } from './styles';
+
+class Repositories extends Component {
+  componentDidMount() {
+    const { loadRepositoriesRequest } = this.props;
+
+    loadRepositoriesRequest();
+  }
+
+  render() {
+    const { repositories } = this.props;
+
+    return (
+      <Container>
+        {repositories.loading ? (
+          <ActivityIndicator size="small" color="#999" />
+        ) : (
+          repositories.data.map(repo => <Text key={repo.id}>{repo.name}</Text>)
+        )}
+      </Container>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  repositories: state.repositories,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(RepositoriesActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Repositories);
