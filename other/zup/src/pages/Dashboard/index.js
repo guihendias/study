@@ -44,9 +44,9 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <Filter placeholder="Pesquisar..." onChange={handleSearch} />
+      <Filter placeholder="Search..." onChange={handleSearch} />
       <SignOutButton onClick={handleLogOut}>
-        <strong>Sair</strong>
+        <strong>Log out</strong>
       </SignOutButton>
       <List>
         {products.map(

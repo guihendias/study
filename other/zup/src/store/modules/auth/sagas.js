@@ -9,10 +9,10 @@ import history from '~/services/history';
 
 export function* signIn({ payload }) {
   try {
-    const { email, password } = payload;
+    const { username, password } = payload;
 
     const response = yield call(api.post, '/sessions', {
-      email,
+      username,
       password,
     });
 

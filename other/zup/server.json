@@ -14,6 +14,11 @@
       "email": "guilher32e@teste.com",
       "password": "1234444",
       "id": 3
+    },
+    {
+      "username": "asdasd",
+      "password": "asdasd",
+      "id": 4
     }
   ],
   "products": [

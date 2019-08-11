@@ -7,18 +7,16 @@ import * as Yup from 'yup';
 import { signInRequest } from '~/store/modules/auth/actions';
 
 const schema = Yup.object().shape({
-  email: Yup.string()
-    .email('Insira um e-mail válido')
-    .required('O e-mail é obrigatório'),
-  password: Yup.string().required('A senha é obrigatória'),
+  username: Yup.string().required('Username is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 export default function SignIn() {
   const dispatch = useDispatch();
   const loading = useSelector(state => state.auth.loading);
 
-  function handleSubmit({ email, password }) {
-    dispatch(signInRequest(email, password));
+  function handleSubmit({ username, password }) {
+    dispatch(signInRequest(username, password));
   }
 
   return (
@@ -27,9 +25,9 @@ export default function SignIn() {
         <span>Login Form</span>
       </header>
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="email" type="email" placeholder="Seu email" />
+        <Input name="username" placeholder="Username" />
 
-        <Input name="password" type="password" placeholder="Seu senha" />
+        <Input name="password" type="password" placeholder="Password" />
 
         <div id="btn-container">
           <button type="submit">{loading ? 'Carregando...' : 'Sign In'}</button>
