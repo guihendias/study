@@ -1,4 +1,4 @@
-package com.challenge;
+package com.instaclone;
 
 import android.app.Application;
 import android.util.Log;
